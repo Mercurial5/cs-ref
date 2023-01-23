@@ -1,21 +1,25 @@
 import api from "./api";
 import * as query from "react-query";
+import { query as client } from "../tools/query";
 
-export default {
-  useLoginQuery: () =>
-    query.useMutation({
-      mutationFn: (data) => api.login(data),
-    }),
+export const useLoginQuery = () =>
+  query.useMutation({
+    mutationFn: (data) => api.login(data),
+    onSuccess: () => client.invalidateQueries({ queryKey: ["user"] }),
+  });
 
-  useLogoutQuery: () =>
-    query.useMutation({
-      mutationFn: (data) => api.logout(data),
-    }),
+export const useLogoutQuery = () =>
+  query.useMutation({
+    mutationFn: (data) => api.logout(data),
+    onSuccess: () => client.invalidateQueries({ queryKey: ["user"] }),
+  });
 
-  useVerifyQuery: () => query.useQuery({ queryKey: ["user"], queryFn: api.verify }),
+export const useVerifyQuery = () => query.useQuery({ queryKey: ["user"], queryFn: api.verify });
 
-  useUpdateQuery: () =>
-    query.useMutation({
-      mutationFn: (data) => api.update(data),
-    }),
-};
+export const useUpdateQuery = () =>
+  query.useMutation({
+    mutationFn: (data) => api.update(data),
+    onSuccess: () => client.invalidateQueries({ queryKey: ["user"] }),
+  });
+
+export const useCitiesQuery = () => query.useQuery({ queryKey: ["cities"], queryFn: api.cities });

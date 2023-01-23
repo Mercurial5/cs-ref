@@ -1,5 +1,3 @@
-const Help = () => {
-  return <>Help</>;
-};
+const HelpView = () => "Помощь";
 
-export default Help;
+export default HelpView;

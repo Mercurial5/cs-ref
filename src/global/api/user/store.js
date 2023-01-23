@@ -1,7 +1,8 @@
 import { create } from "zustand";
 
-const useStore = create((set) => ({
+const _useStore = create((set) => ({
   value: null,
+
   update: (value) =>
     set((state) => {
       let _value = state.user;
@@ -14,9 +15,15 @@ const useStore = create((set) => ({
         },
       };
     }),
+
+  reset: () =>
+    set(() => {
+      return {
+        value: null,
+      };
+    }),
 }));
 
-export default {
-  useStore: () => useStore((state) => state.value),
-  useUpdateStore: () => useStore((state) => state.update),
-};
+export const useStore = () => _useStore((state) => state.value);
+export const useUpdateStore = () => _useStore((state) => state.update);
+export const useResetStore = () => _useStore((state) => state.reset);

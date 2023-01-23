@@ -1,5 +1,3 @@
-const Reference = () => {
-  return <>Reference</>;
-};
+const ReferenceView = () => "Справка";
 
-export default Reference;
+export default ReferenceView;

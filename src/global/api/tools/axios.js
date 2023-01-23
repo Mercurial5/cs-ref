@@ -16,6 +16,9 @@ export const token = {
   },
 };
 
+export const useToken = () => token.value;
+export const useTokenUpdate = () => token.update.bind(token);
+
 user.interceptors.request.use((request) => {
   request.headers.Authorization = `Token ${token.value}`;
   return request;

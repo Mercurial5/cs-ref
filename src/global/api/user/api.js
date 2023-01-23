@@ -15,7 +15,12 @@ export default {
     return response.data;
   },
 
-  async update({}) {
+  async update(data) {
     return await user.patch(`/users/me/`, data);
+  },
+
+  async cities() {
+    const response = await user.get("/users/cities/");
+    return response.data;
   },
 };

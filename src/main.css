@@ -1,3 +1,71 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#root {
+  position: relative;
+  overflow-y: hidden;
+}
+
+@screen sm {
+  body::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    background: rgba(39, 39, 42, 0.86);
+    background-clip: padding-box;
+    box-shadow: none;
+    min-height: 120px;
+  }
+
+  body::-webkit-scrollbar-track-piece {
+    background: #f4f7fa;
+  }
+
+  body::-webkit-scrollbar-thumb:hover {
+    background: rgba(39, 39, 42, 1);
+    background-clip: padding-box;
+  }
+
+  body::-webkit-scrollbar-track {
+    background: none;
+    border: none;
+  }
+
+  body::-webkit-scrollbar-track:hover {
+    background: none;
+    border: none;
+  }
+
+  .scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background: rgba(220, 220, 220, 0.86);
+    background-clip: padding-box;
+    box-shadow: none;
+    min-height: 80px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track-piece {
+    background: #fff;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(63, 63, 70, 0.86);
+    background-clip: padding-box;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    background: none;
+    border: none;
+  }
+
+  .scrollbar::-webkit-scrollbar-track:hover {
+    background: none;
+    border: none;
+  }
+}

@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { queries, store, ROLES } from "../api/user";
+import { useVerifyQuery } from "../api/user/queries";
+import { useStore } from "../api/user/store";
+import { ROLES } from "../api/user";
 
-import ClientApp from "../../client/routes/App";
+import ClientApp from "../../client/views/App";
 
-const Panel = () => {
+const PanelLogic = () => {
   const navigate = useNavigate();
-  const verify = queries.useVerifyQuery();
+  const verify = useVerifyQuery();
 
   useEffect(() => {
     if (!verify.data && !verify.isLoading) {
@@ -14,7 +16,7 @@ const Panel = () => {
     }
   }, [verify.data, verify.isLoading]);
 
-  const user = store.useStore();
+  const user = useStore();
 
   if (user) {
     switch (user.role) {
@@ -26,4 +28,4 @@ const Panel = () => {
   return <div className="px-5 sm:px-8 py-8 text-medium">Загрузка...</div>;
 };
 
-export default Panel;
+export default PanelLogic;
