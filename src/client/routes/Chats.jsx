@@ -1,44 +1,5 @@
 import { useState } from "react";
 
-const ChatLogic = ({ children }) => {
-  const [isChatOpened, setIsChatOpened] = useState(false);
-
-  const showChat = () => {
-    setIsChatOpened((value) => !value);
-  };
-
-  const hideChat = () => {
-    setIsChatOpened((value) => !value);
-  };
-
-  return (
-    <>
-      {typeof children === "function"
-        ? children({
-            isChatOpened,
-            showChat,
-            hideChat,
-          })
-        : children}
-    </>
-  );
-};
-
-const ChatInputLogic = ({ children }) => {
-  const [text, setText] = useState("");
-
-  return (
-    <>
-      {typeof children === "function"
-        ? children({
-            text,
-            setText,
-          })
-        : children}
-    </>
-  );
-};
-
 const ChatsView = () => (
   <ChatLogic>
     {({ isChatOpened, showChat, hideChat }) => (
@@ -327,7 +288,7 @@ const ChatsView = () => (
               </div>
             </div>
 
-            <div className="flex-shrink flex-grow flex flex-col p-4 sm:p-8 overflow-auto">
+            <div className="flex-shrink flex-grow flex flex-col p-4 sm:p-8 overflow-auto scrollbar">
               {/* other secondary */}
               <div className="flex items-end mb-4 md:ml-16">
                 <div className="max-w-[360px] px-4 py-3 mr-8 rounded-lg text-zinc-100 bg-current relative">
@@ -471,5 +432,29 @@ const ChatsView = () => (
     )}
   </ChatLogic>
 );
+
+const ChatLogic = ({ children }) => {
+  const [isChatOpened, setIsChatOpened] = useState(false);
+
+  const showChat = () => {
+    setIsChatOpened((value) => !value);
+  };
+
+  const hideChat = () => {
+    setIsChatOpened((value) => !value);
+  };
+
+  return (
+    <>
+      {typeof children === "function"
+        ? children({
+            isChatOpened,
+            showChat,
+            hideChat,
+          })
+        : children}
+    </>
+  );
+};
 
 export default ChatsView;
