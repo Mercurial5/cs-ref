@@ -420,16 +420,25 @@ const ChatsView = () => (
 
             <div className="relative">
               <div className="absolute bottom-0 left-0 right-0 w-full p-4 max-sm:pb-8 sm:p-8 mt-auto bg-gradient-to-t from-slate-300">
-                <label className="w-full py-4 rounded-xl block bg-white border-2 border-zinc-200">
-                  <textarea
-                    className="max-h-28 h-auto min-h-full w-full px-6 block text-base sm:text-lg bg-transparent text-black font-normal focus:outline-none overflow-auto resize-none scrollbar"
-                    rows="1"
-                    onInput={(e) => {
-                      e.target.style.height = "auto";
-                      e.target.style.height = e.target.scrollHeight + "px";
-                    }}
-                  />
-                </label>
+                <div className="relative">
+                  <label className="w-full py-4 rounded-xl block bg-white border-2 border-zinc-200">
+                    <textarea
+                      className="max-h-12 lg:max-h-28 h-auto min-h-full w-full pl-6 pr-16 lg:pr-20 block text-base sm:text-lg bg-transparent text-black font-normal focus:outline-none overflow-auto resize-none scrollbar"
+                      rows="1"
+                      onInput={(e) => {
+                        e.target.style.height = "auto";
+                        e.target.style.height = e.target.scrollHeight + "px";
+                      }}
+                    />
+                  </label>
+
+                  <button
+                    className="absolute top-1/2 -translate-y-1/2 right-0 w-14 lg:w-16 h-14 lg:h-16 rounded-xl flex justify-center items-center text-center text-sm sm:text-base bg-emerald-700 text-white font-semibold select-none-700"
+                    type="button"
+                  >
+                    <SendIconView className="w-6 h-6" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -464,10 +473,19 @@ const ChatLogic = ({ children }) => {
 };
 
 const BackIconView = (props) => (
-  <svg width="32" height="32" fill="none">
+  <svg width="32" height="32" fill="none" {...props}>
     <path
       fill="#000"
       d="M25.334 14.667H10.441l6.506-6.507c.52-.52.52-1.373 0-1.893s-1.36-.52-1.88 0l-8.786 8.787c-.52.52-.52 1.36 0 1.88l8.786 8.786c.52.52 1.36.52 1.88 0 .52-.52.52-1.36 0-1.88l-6.506-6.506h14.893c.733 0 1.333-.6 1.333-1.334 0-.733-.6-1.333-1.333-1.333Z"
+    />
+  </svg>
+);
+
+const SendIconView = (props) => (
+  <svg viewBox="0 0 49 49" width="49" height="49" fill="none" {...props}>
+    <path
+      fill="#fff"
+      d="m43.637 22.366-34-16A2 2 0 0 0 6.845 8.66l2.424 9.698 15.516 5.818-15.516 5.818-2.424 9.698a1.996 1.996 0 0 0 2.792 2.294l34-16a2 2 0 0 0 0-3.62Z"
     />
   </svg>
 );
