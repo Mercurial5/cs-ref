@@ -263,11 +263,17 @@ const ChatsView = () => (
               isChatOpened ? "" : "max-lg:hidden"
             }`}
           >
-            <div
-              className="px-4 sm:px-8 py-3 sm:py-4 border-b bg-white sm:bg-zinc-100 text-black"
-              onClick={hideChat}
-            >
-              <div className="w-full flex items-center">
+            <div className="lg:px-8 lg:py-4 border-b flex bg-white sm:bg-zinc-100 text-black">
+              <button
+                id="app-menu-toggler"
+                className="px-4 py-4 lg:hidden outline-none"
+                type="button"
+                onClick={hideChat}
+              >
+                <BackIconView />
+              </button>
+
+              <div className="w-full lg:pr-4 flex items-center">
                 {/* <img
                   className="w-12 h-12 rounded-full flex-shrink-0 flex-grow-0"
                   src="/users/1.png"
@@ -456,5 +462,14 @@ const ChatLogic = ({ children }) => {
     </>
   );
 };
+
+const BackIconView = (props) => (
+  <svg width="32" height="32" fill="none">
+    <path
+      fill="#000"
+      d="M25.334 14.667H10.441l6.506-6.507c.52-.52.52-1.373 0-1.893s-1.36-.52-1.88 0l-8.786 8.787c-.52.52-.52 1.36 0 1.88l8.786 8.786c.52.52 1.36.52 1.88 0 .52-.52.52-1.36 0-1.88l-6.506-6.506h14.893c.733 0 1.333-.6 1.333-1.334 0-.733-.6-1.333-1.333-1.333Z"
+    />
+  </svg>
+);
 
 export default ChatsView;
