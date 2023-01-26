@@ -290,7 +290,7 @@ const ContactFormLogic = ({ children, ...props }) => {
   const form = useForm({
     values: {
       phone: store?.phone ?? "",
-      city: store?.city ?? "",
+      city: store?.city ?? undefined,
       email: store?.email ?? "",
       address: store?.address ?? "",
     },
@@ -474,13 +474,13 @@ const SelectView = (props) => (
   <label className="w-full mt-2 text-zinc-200">
     <div className="relative">
       <Select
-        className={`w-full px-4 py-[10px] border-2 rounded text-sm sm:text-base text-black bg-zinc-100 focus:bg-zinc-200 focus:outline-none transition ease-in-out duration-150 appearance-none ${
+        className={`w-full pl-4 pr-10 py-[10px] border-2 rounded text-sm sm:text-base text-black bg-zinc-100 focus:bg-zinc-200 focus:outline-none transition ease-in-out duration-150 appearance-none ${
           props.initial == props.value ? "border-zinc-200" : "border-emerald-700"
         }`}
         {...props}
       />
 
-      <div className="absolute top-2 bottom-2 right-1 w-10 mt-2 flex justify-center items-center transition ease-in-out duration-150 pointer-events-none">
+      <div className="absolute top-2 bottom-2 right-1 w-10 sm:mt-2 flex justify-center items-center transition ease-in-out duration-150 pointer-events-none">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path
             fill="#000"
