@@ -22,6 +22,7 @@ const Field = ({ params, elements, children, ...props }) => {
     if (child) {
       let isInputElements =
         child.type === Elements.Input ||
+        child.type === Elements.FileInput ||
         child.type === Elements.Textarea ||
         child.type === Elements.Select;
 

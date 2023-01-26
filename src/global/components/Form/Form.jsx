@@ -23,11 +23,15 @@ const Form = ({ params, elements, children, ...props }) => {
             child.type === Elements.Select;
 
           if (isInputElements) {
+            const value = params.values[child.props?.name];
+            const onChange = (e) => child.props?.onChange && child.props?.onChange(e);
+            const onBlur = (e) => child.props?.onBlur && child.props?.onBlur(e);
+
             return React.cloneElement(child, {
               ...child.props,
-              value: params.values[child.props?.name],
-              onChange: params.handleChange,
-              onBlur: params.handleBlur,
+              value,
+              onChange: (e) => onChange(e) & params.handleChange(e),
+              onBlur: (e) => onBlur(e) & params.handleBlur(e),
             });
           }
 
