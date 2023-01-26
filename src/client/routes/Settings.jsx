@@ -24,7 +24,7 @@ const SettingsView = () => (
             <img src="/users/1.png" alt="#" className="w-14 h-14 rounded-full" />
 
             <div className="ml-6 sm:ml-7 mr-8 flex flex-col text-left">
-              <span className="text-lg sm:text-lg font-semibold leading-5 mb-2">
+              <span className="text-lg sm:text-lg font-semibold leading-5 max-sm:mb-2">
                 {data.fullname}
               </span>
               <span className="text-xs sm:text-sm font-normal">{data.email}</span>
