@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
-import {SearchForm} from "../../global/components/Form/Search.jsx";
-import Table from "../components/Table.jsx";
-import Button from "../components/Button/Button.jsx";
+import {SearchForm} from "../../../global/components/Form/Search.jsx";
+import Table from "../../components/Table.jsx";
+import Button from "../../components/Button/Button.jsx";
 
 
 const PartnerView = () => {
@@ -25,7 +25,7 @@ const PartnerView = () => {
                 <Button icon="plus" text="Добавить партнера" onClick={() => navigate("/panel/partner/add")}/>
             </div>
 
-            <Table headers={headers} rows={rows} edit_path="panel/partner/edit"/>
+            <Table headers={headers} rows={rows}/>
 
         </>
     )

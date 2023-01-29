@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import Button from "./Button/Button.jsx";
 
-export default function Table({headers, rows, edit_path}) {
+export default function Table({headers, rows}) {
     const navigate = useNavigate();
 
     const table_headers = [];
@@ -15,7 +15,7 @@ export default function Table({headers, rows, edit_path}) {
         for (let j = 0; j < rows[i].length; j++) {
             row.push(<td>{rows[i][j]}</td>)
         }
-        row.push(<td className="flex justify-center mt-2"><Button onClick={() => navigate(edit_path)} icon="edit"
+        row.push(<td className="flex justify-center mt-2"><Button onClick={() => navigate("edit")} icon="edit"
                                                                   text="Редактировать"/></td>)
         table_rows.push(<tr className="h-14 border-b">{row}</tr>);
     }

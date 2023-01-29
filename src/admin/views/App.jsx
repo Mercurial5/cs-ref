@@ -5,9 +5,17 @@ import {Layout} from "./Layout";
 import loadable from "@loadable/component";
 import {Navigate} from "react-router-dom";
 
-const Partner = loadable(() => import("../routes/Partner"));
-const Manager = loadable(() => import("../routes/Manager"));
-const Client = loadable(() => import("../routes/Client"));
+const Partner = loadable(() => import("../routes/partner/Partner"));
+const PartnerAdd = loadable(() => import("../routes/partner/Add"))
+const PartnerEdit = loadable(() => import("../routes/partner/Edit"))
+
+const Manager = loadable(() => import("../routes/manager/Manager"));
+const ManagerAdd = loadable(() => import("../routes/manager/Add"))
+const ManagerEdit = loadable(() => import("../routes/manager/Edit"))
+
+const Client = loadable(() => import("../routes/client/Client"));
+const ClientAdd = loadable(() => import("../routes/client/Add"))
+const ClientEdit = loadable(() => import("../routes/client/Edit"))
 
 const App = () => {
     const location = useLocation();
@@ -20,17 +28,20 @@ const App = () => {
     return (
         <Routes>
             <Route element={<Layout/>}>
-                <Route path="partner" element={<Partner/>}>
-                    <Route path="add" element={<Manager/>}/>
-                    <Route path="edit" element={<Partner/>}/>
+                <Route path="partner">
+                    <Route index element={<Partner/>}/>
+                    <Route path="add" element={<PartnerAdd/>}/>
+                    <Route path="edit" element={<PartnerEdit/>}/>
                 </Route>
-                <Route path="manager" element={<Manager/>}>
-                    <Route path="add" element={<Partner/>}/>
-                    <Route path="edit" element={<Partner/>}/>
+                <Route path="manager">
+                    <Route index element={<Manager/>}/>
+                    <Route path="add" element={<ManagerAdd/>}/>
+                    <Route path="edit" element={<ManagerEdit/>}/>
                 </Route>
-                <Route path="client" element={<Client/>}>
-                    <Route path="add" element={<Partner/>}/>
-                    <Route path="edit" element={<Partner/>}/>
+                <Route path="client">
+                    <Route index element={<Client/>}/>
+                    <Route path="add" element={<ClientAdd/>}/>
+                    <Route path="edit" element={<ClientEdit/>}/>
                 </Route>
                 <Route path="*" element={<Navigate to="/404" replace={true}/>}/>
             </Route>

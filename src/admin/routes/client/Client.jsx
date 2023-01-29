@@ -1,6 +1,6 @@
-import Table from "../components/Table.jsx";
-import {SearchForm} from "../../global/components/Form/Search.jsx";
-import Button from "../components/Button/Button.jsx";
+import Table from "../../components/Table.jsx";
+import {SearchForm} from "../../../global/components/Form/Search.jsx";
+import Button from "../../components/Button/Button.jsx";
 import {useNavigate} from "react-router-dom";
 
 const ClientView = () => {
