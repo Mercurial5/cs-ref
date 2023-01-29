@@ -1,11 +1,11 @@
-import { NavLink } from "react-router-dom";
-import { useState } from "react";
-import { useStore } from "../../global/api/user/store";
+import {NavLink} from "react-router-dom";
+import {useState} from "react";
+import {useStore} from "../../global/api/user/store";
 
 const HeaderView = () => {
     return (
         <MenuLogic>
-            {({ isOpened, handleToggle }) => (
+            {({isOpened, handleToggle}) => (
                 <div
                     className={`h-16 lg:h-20 flex lg:justify-between bg-white shadow-lg shadow-slate-200 ${
                         isOpened ? "relative z-50" : " "
@@ -19,8 +19,8 @@ const HeaderView = () => {
                             type="button"
                             onClick={handleToggle}
                         >
-                            <OpenIconView className={`${isOpened ? "hidden" : ""}`} />
-                            <CloseIconView className={`${isOpened ? "" : "hidden"}`} />
+                            <OpenIconView className={`${isOpened ? "hidden" : ""}`}/>
+                            <CloseIconView className={`${isOpened ? "" : "hidden"}`}/>
                         </button>
 
                         <div className="px-3 sm:px-4 lg:px-10 flex items-center select-none">
@@ -51,56 +51,13 @@ const HeaderView = () => {
                                 isOpened ? "" : "max-lg:hidden"
                             } max-lg:min-h-screen max-lg:w-full max-lg:py-8 max-lg:border-t-2 flex absolute top-16 left-0 right-0 z-50 lg:static bg-white`}
                         >
-                            <TabsProvider>
-                                {({ tabs }) => (
-                                    <ul
-                                        aria-labelledby="app-menu-toggler"
-                                        className="max-lg:w-full flex flex-col lg:flex-row list-none"
-                                    >
-                                        {tabs.map((props) => (
-                                            <li key={props.to}>
-                                                <NavLink
-                                                    className="h-full px-3 sm:px-9 max-lg:py-6 flex items-center relative select-none lg:hover:bg-slate-100 transition duration-150 ease-in-out"
-                                                    to={props.to || "#"}
-                                                    onClick={handleToggle}
-                                                >
-                                                    {({ isActive }) => (
-                                                        <>
-                                                            <IconProvider name={props.icon}>
-                                                                {({ Icon }) => (
-                                                                    <Icon
-                                                                        className={`${isActive ? "fill-emerald-700" : "fill-black"}`}
-                                                                    />
-                                                                )}
-                                                            </IconProvider>
-
-                                                            <span
-                                                                className={`ml-5 text-sm lg:text-base font-semibold ${
-                                                                    isActive ? "text-emerald-700" : "text-black"
-                                                                }`}
-                                                            >
-                                {props.children}
-                              </span>
-
-                                                            <span
-                                                                className={`${
-                                                                    isActive ? "block" : "hidden"
-                                                                } h-0.5 rounded bg-emerald-700 absolute bottom-0 left-3 right-3 sm:left-9 sm:right-9`}
-                                                            />
-                                                        </>
-                                                    )}
-                                                </NavLink>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                            </TabsProvider>
                         </div>
                     </>
 
                     <UserProvider>
                         {(data) => (
-                            <div className="pl-3 sm:pl-8 pr-3 sm:pr-10 lg:pr-6 max-lg:ml-auto lg:mr-4 flex lg:hidden xl:flex items-center">
+                            <div
+                                className="pl-3 sm:pl-8 pr-3 sm:pr-10 lg:pr-6 max-lg:ml-auto lg:mr-4 flex lg:hidden xl:flex items-center">
                                 <div className="mr-2 sm:mr-7 flex flex-col text-right">
                   <span className="font-semibold lg:text-lg text-sm truncate whitespace-nowrap w-44">
                     {data.fullname}
@@ -123,7 +80,7 @@ const HeaderView = () => {
     );
 };
 
-const MenuLogic = ({ children }) => {
+const MenuLogic = ({children}) => {
     const [isOpened, setIsOpened] = useState(false);
 
     const handleToggle = () => {
@@ -142,7 +99,7 @@ const MenuLogic = ({ children }) => {
     );
 };
 
-const UserProvider = ({ children }) => {
+const UserProvider = ({children}) => {
     const store = useStore();
 
     const data = {
@@ -156,34 +113,8 @@ const UserProvider = ({ children }) => {
     return <>{typeof children === "function" ? children(data) : children}</>;
 };
 
-const TabsProvider = ({ children }) => {
-    const tabs = [
-        {
-            to: "/panel/settings",
-            icon: "settings",
-            children: "Личный кабинет",
-        },
-        {
-            to: "/panel/chats",
-            icon: "chats",
-            children: "Заявки",
-        },
-        {
-            to: "/panel/help",
-            icon: "help",
-            children: "Помощь",
-        },
-        {
-            to: "/panel/reference",
-            icon: "reference",
-            children: "Справка",
-        },
-    ];
 
-    return <>{typeof children === "function" ? children({ tabs }) : children}</>;
-};
-
-const IconProvider = ({ name, children }) => {
+const IconProvider = ({name, children}) => {
     const Icon =
         name == "settings" ? (
             SettingsIconView
@@ -194,10 +125,10 @@ const IconProvider = ({ name, children }) => {
         ) : name == "reference" ? (
             ReferenceIconView
         ) : (
-            <span />
+            <span/>
         );
 
-    return <>{typeof children === "function" ? children({ Icon }) : children}</>;
+    return <>{typeof children === "function" ? children({Icon}) : children}</>;
 };
 
 const OpenIconView = (props) => (
@@ -226,7 +157,8 @@ const CloseIconView = (props) => (
 
 const SettingsIconView = (props) => (
     <svg width="30" height="30" fill="none" {...props}>
-        <path d="M20 7.5a5 5 0 1 1-10 0 5 5 0 0 1 10 0ZM25 21.875c0 3.107 0 5.625-10 5.625S5 24.982 5 21.875s4.477-5.625 10-5.625 10 2.518 10 5.625Z" />
+        <path
+            d="M20 7.5a5 5 0 1 1-10 0 5 5 0 0 1 10 0ZM25 21.875c0 3.107 0 5.625-10 5.625S5 24.982 5 21.875s4.477-5.625 10-5.625 10 2.518 10 5.625Z"/>
     </svg>
 );
 
@@ -237,13 +169,15 @@ const ChatsIconView = (props) => (
             d="m13.186 26.91.313-.528c.5-.847.75-1.27 1.15-1.506.399-.236.92-.253 1.96-.286.976-.031 1.632-.116 2.193-.349a4.82 4.82 0 0 0 2.608-2.608c.367-.885.367-2.008.367-4.254v-.963c0-3.156 0-4.733-.71-5.892a4.818 4.818 0 0 0-1.591-1.591c-1.159-.71-2.736-.71-5.892-.71h-2.891c-3.155 0-4.733 0-5.892.71a4.82 4.82 0 0 0-1.59 1.59C2.5 11.684 2.5 13.26 2.5 16.417v.963c0 2.246 0 3.369.367 4.254a4.82 4.82 0 0 0 2.608 2.608c.56.233 1.217.318 2.193.35 1.04.032 1.561.05 1.96.285.4.236.65.66 1.15 1.506l.313.528c.466.787 1.63.787 2.095 0Zm3.17-9.049a1.205 1.205 0 1 0 0-2.41 1.205 1.205 0 0 0 0 2.41Zm-3.013-1.205a1.205 1.205 0 1 1-2.41 0 1.205 1.205 0 0 1 2.41 0Zm-5.421 1.205a1.205 1.205 0 1 0 0-2.41 1.205 1.205 0 0 0 0 2.41Z"
             clipRule="evenodd"
         />
-        <path d="M18.962 2.5c1.44 0 2.585 0 3.503.087.941.09 1.737.277 2.446.712a5.422 5.422 0 0 1 1.79 1.79c.435.709.622 1.505.712 2.446.087.918.087 2.063.087 3.503v.983c0 1.025 0 1.84-.045 2.5-.046.677-.142 1.257-.368 1.8a5.421 5.421 0 0 1-3.034 2.975c-.16.061-.298.114-.418.153.017-.586.017-1.254.017-2.007v-1.115c0-1.502 0-2.76-.097-3.783-.102-1.071-.323-2.076-.89-3a6.694 6.694 0 0 0-2.21-2.21c-.923-.566-1.928-.787-2.999-.89-1.023-.096-2.28-.096-3.783-.096h-3.069c-1.02 0-1.928 0-2.726.03.038-.129.089-.276.148-.45a4.24 4.24 0 0 1 .393-.84 5.422 5.422 0 0 1 1.79-1.79c.71-.434 1.505-.621 2.447-.71.918-.088 2.063-.088 3.502-.088h2.804Z" />
+        <path
+            d="M18.962 2.5c1.44 0 2.585 0 3.503.087.941.09 1.737.277 2.446.712a5.422 5.422 0 0 1 1.79 1.79c.435.709.622 1.505.712 2.446.087.918.087 2.063.087 3.503v.983c0 1.025 0 1.84-.045 2.5-.046.677-.142 1.257-.368 1.8a5.421 5.421 0 0 1-3.034 2.975c-.16.061-.298.114-.418.153.017-.586.017-1.254.017-2.007v-1.115c0-1.502 0-2.76-.097-3.783-.102-1.071-.323-2.076-.89-3a6.694 6.694 0 0 0-2.21-2.21c-.923-.566-1.928-.787-2.999-.89-1.023-.096-2.28-.096-3.783-.096h-3.069c-1.02 0-1.928 0-2.726.03.038-.129.089-.276.148-.45a4.24 4.24 0 0 1 .393-.84 5.422 5.422 0 0 1 1.79-1.79c.71-.434 1.505-.621 2.447-.71.918-.088 2.063-.088 3.502-.088h2.804Z"/>
     </svg>
 );
 
 const HelpIconView = (props) => (
     <svg width="30" height="30" fill="none" {...props}>
-        <path d="M8.75 6.037c0 1.934 2.157 3.972 3.937 5.325 1 .759 1.498 1.138 2.313 1.138.815 0 1.314-.38 2.313-1.138 1.78-1.353 3.937-3.39 3.937-5.325 0-3.488-3.438-4.79-6.25-2.096-2.812-2.694-6.25-1.392-6.25 2.096ZM7.825 26.735H7.5c-1.179 0-1.768 0-2.134-.366C5 26.003 5 25.414 5 24.235v-1.39c0-.648 0-.972.166-1.261.167-.29.418-.436.92-.728 3.307-1.923 8.003-3.006 11.138-1.136.21.126.4.277.562.459.697.784.646 1.966-.158 2.668-.17.148-.35.26-.533.3.15-.018.294-.038.43-.06 1.14-.181 2.096-.79 2.972-1.451l2.259-1.707c.796-.601 1.978-.602 2.775 0 .717.541.936 1.433.483 2.16-.529.847-1.274 1.931-1.99 2.593-.715.664-1.782 1.256-2.652 1.676-.964.466-2.03.734-3.113.91a18.565 18.565 0 0 1-6.664-.148 18.786 18.786 0 0 0-3.77-.385Z" />
+        <path
+            d="M8.75 6.037c0 1.934 2.157 3.972 3.937 5.325 1 .759 1.498 1.138 2.313 1.138.815 0 1.314-.38 2.313-1.138 1.78-1.353 3.937-3.39 3.937-5.325 0-3.488-3.438-4.79-6.25-2.096-2.812-2.694-6.25-1.392-6.25 2.096ZM7.825 26.735H7.5c-1.179 0-1.768 0-2.134-.366C5 26.003 5 25.414 5 24.235v-1.39c0-.648 0-.972.166-1.261.167-.29.418-.436.92-.728 3.307-1.923 8.003-3.006 11.138-1.136.21.126.4.277.562.459.697.784.646 1.966-.158 2.668-.17.148-.35.26-.533.3.15-.018.294-.038.43-.06 1.14-.181 2.096-.79 2.972-1.451l2.259-1.707c.796-.601 1.978-.602 2.775 0 .717.541.936 1.433.483 2.16-.529.847-1.274 1.931-1.99 2.593-.715.664-1.782 1.256-2.652 1.676-.964.466-2.03.734-3.113.91a18.565 18.565 0 0 1-6.664-.148 18.786 18.786 0 0 0-3.77-.385Z"/>
     </svg>
 );
 
@@ -257,4 +191,4 @@ const ReferenceIconView = (props) => (
     </svg>
 );
 
-export { HeaderView as Header };
+export {HeaderView as Header};

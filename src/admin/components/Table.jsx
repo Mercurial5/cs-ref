@@ -22,15 +22,57 @@ export default function Table({headers, rows}) {
 
 
     return (
-        <table className="text-xs lg:text-sm m-5 border">
-            <thead className="bg-[#F4F3F3] text-black/50 text-medium lg:text-sm text-xs uppercase h-10">
-            <tr>
-                {table_headers}
-            </tr>
-            </thead>
-            <tbody className="text-center">
-            {table_rows}
-            </tbody>
-        </table>
+        <>
+            <table className="text-xs lg:text-sm m-5 border">
+                <thead className="bg-[#F4F3F3] text-black/50 text-medium lg:text-sm text-xs uppercase h-10">
+                <tr>
+                    {table_headers}
+                </tr>
+                </thead>
+                <tbody className="text-center">
+                {table_rows}
+                </tbody>
+            </table>
+            <div className="relative h-full mb-10">
+                <Pagination/>
+            </div>
+        </>
+
+    )
+}
+
+
+export function Pagination() {
+    let active = 'text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700';
+    let inactive = 'leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700';
+    return (
+        <nav aria-label="Page navigation example" className="absolute inset-x-0 bottom-0">
+            <div className="flex justify-center">
+                <ul className="inline-flex -space-x-px ">
+                    <li>
+                        <a href="#" className={`px-3 py-2 ml-0 ${inactive}`}>Previous</a>
+                    </li>
+                    <li>
+                        <a href="#" className={`px-3 py-2 ${active}`}>1</a>
+                    </li>
+                    <li>
+                        <a href="#" className={`px-3 py-2 ${inactive}`}>2</a>
+                    </li>
+                    <li>
+                        <a href="#" className={`px-3 py-2 ${inactive}`}>3</a>
+                    </li>
+                    <li>
+                        <a href="#" className={`px-3 py-2 ${inactive}`}>4</a>
+                    </li>
+                    <li>
+                        <a href="#" className={`px-3 py-2 ${inactive}`}>5</a>
+                    </li>
+                    <li>
+                        <a href="#" className={`px-3 py-2 ${inactive}`}>Next</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
     )
 }
