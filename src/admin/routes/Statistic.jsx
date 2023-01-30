@@ -1,10 +1,26 @@
 import Table from "../components/Table.jsx";
+import {useApplicationsQuery} from "../api/queries.js";
+import {useEffect, useState} from "react";
 
 const Statistic = () => {
     const headers = ['ID', 'Дата создания', 'Имя клиента', 'Имя менеджера', 'Статус']
-    const rows = [
-        [1, '12/12/2022', 'Client', 'Manager', 'Done']
-    ]
+
+    const [applications, setApplications] = useState([])
+
+    const query = useApplicationsQuery(1);
+
+    useEffect(() => {
+        if (query.data && query.isSuccess) {
+            let applications = []
+            console.log(query.data[0])
+            for (let i = 0; i < query.data.length; i++) {
+                const manager = query.data[i].manager;
+
+                applications.push([query.data[i].id, query.data[i].created, query.data[i].owner.name, manager ? manager.name : '', query.data[i].status])
+            }
+            setApplications(applications);
+        }
+    }, [query.data, query.isSuccess]);
 
     return (
         <>
@@ -21,7 +37,7 @@ const Statistic = () => {
                 <span className="font-medium text-xl my-6">Список заказов</span>
             </div>
 
-            <Table headers={headers} rows={rows} is_editable={false}/>
+            <Table headers={headers} rows={applications} is_editable={false}/>
 
         </>
     );
