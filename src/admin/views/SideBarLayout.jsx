@@ -1,5 +1,6 @@
 import {NavLink} from 'react-router-dom'
 import {useNavigate} from 'react-router-dom';
+// import { LogoutLogic } from '../../client/routes/Settings';
 
 export function SideBarLayout() {
     const navigate = useNavigate();
@@ -56,8 +57,12 @@ export function SideBarLayout() {
                 </ul>
             </div>
 
-            <div className="text-red-600">
-                <NavItem icon="logout"/>
+            <div className="text-red-600 flex flex-row">
+                {/* <LogoutLogic>
+                    {({ handleLogout }) => (
+                        <NavItem icon="logout" onClick={handleLogout}/>
+                    )}
+                </LogoutLogic> */}
             </div>
         </div>
     );

@@ -205,7 +205,7 @@ const CitiesProvider = ({ children }) => {
   return <>{typeof children === "function" ? children(cities) : children}</>;
 };
 
-const LogoutLogic = ({ children }) => {
+export const LogoutLogic = ({ children }) => {
   const navigate = useNavigate();
   const reset = useResetStore();
   const update = useTokenUpdate();

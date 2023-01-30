@@ -2,14 +2,26 @@ import Table from "../../components/Table.jsx";
 import {SearchForm} from "../../../global/components/Form/Search.jsx";
 import Button from "../../components/Button/Button.jsx";
 import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useUsersListQuery} from "../../api/queries.js";
+import {ROLES} from "../../api/index.js";
 
 const ManagerView = () => {
-    const headers = ['Имя', 'Почта', '123', '123', '123', 'Редактировать'];
-    const rows = [
-        ['AITU', 'TOO', 95, 12313123, 'aitu@gmail.com'],
-        ['AITU', 'TOO', 95, 12313123, 'aitu@gmail.com'],
-        ['AITU', 'TOO', 95, 12313123, 'aitu@gmail.com']
-    ]
+    const query = useUsersListQuery(ROLES.MANAGER, 1);
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        if (query.data && query.isSuccess) {
+            let users = []
+            for (let i = 0; i < query.data.length; i++) {
+                users.push([query.data[i].name, query.data[i].surname, query.data[i].email, query.data[i].phone, query.data[i].email])
+            }
+            setUsers(users);
+        }
+    }, [query.data, query.isSuccess]);
+
+    const headers = ['Имя', 'Фамилия', 'Почта', 'Телефон', 'Специализация', 'Редактировать'];
+
 
     const navigate = useNavigate();
     return (
@@ -20,7 +32,7 @@ const ManagerView = () => {
                 <Button icon="plus" text="Добавить Менеджера" onClick={() => navigate("/panel/add")}/>
             </div>
 
-            <Table headers={headers} rows={rows} edit_path="panel/manager/edit"/>
+            <Table headers={headers} rows={users} edit_path="panel/manager/edit"/>
         </>
     )
 }

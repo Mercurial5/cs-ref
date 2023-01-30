@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -22,7 +23,7 @@
   body::-webkit-scrollbar-track-piece {
     background: #f4f7fa;
   }
-
+  
   body::-webkit-scrollbar-thumb:hover {
     background: rgba(39, 39, 42, 1);
     background-clip: padding-box;
