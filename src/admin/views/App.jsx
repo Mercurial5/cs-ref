@@ -1,9 +1,8 @@
 import {useEffect} from "react";
-import {Routes, Route, useLocation, useNavigate} from "react-router-dom";
+import {Navigate, Route, Routes, useLocation, useNavigate} from "react-router-dom";
 import {Layout} from "./Layout";
 
 import loadable from "@loadable/component";
-import {Navigate} from "react-router-dom";
 
 const Partner = loadable(() => import("../routes/partner/Partner"));
 const PartnerAdd = loadable(() => import("../routes/partner/Add"))
@@ -16,6 +15,8 @@ const ManagerEdit = loadable(() => import("../routes/manager/Edit"))
 const Client = loadable(() => import("../routes/client/Client"));
 const ClientAdd = loadable(() => import("../routes/client/Add"))
 const ClientEdit = loadable(() => import("../routes/client/Edit"))
+
+const Statistic = loadable(() => import("../routes/Statistic"))
 
 const App = () => {
     const location = useLocation();
@@ -43,6 +44,7 @@ const App = () => {
                     <Route path="add" element={<ClientAdd/>}/>
                     <Route path="edit" element={<ClientEdit/>}/>
                 </Route>
+                <Route path="statistic" element={<Statistic/>}/>
                 <Route path="*" element={<Navigate to="/404" replace={true}/>}/>
             </Route>
         </Routes>

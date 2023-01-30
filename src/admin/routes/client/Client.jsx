@@ -20,21 +20,15 @@ const ClientView = () => {
         }
     }, [query.data, query.isSuccess]);
 
-    const headers = ['Имя', 'Фамилия', 'Почта', 'Телефон', 'Количество заявок', 'Редактировать'];
-    const rows = [
-        ['AIT', 'TOO', 95, 12313123, 'aitu@gmail.com'],
-        ['AIT', 'TOO', 95, 12313123, 'aitu@gmail.com'],
-        ['AIT', 'TOO', 95, 12313123, 'aitu@gmail.com']
-    ];
+    const headers = ['Имя', 'Фамилия', 'Почта', 'Телефон', 'Количество заявок'];
 
-    const navigate = useNavigate();
     return (
         <>
             <div className="flex justify-between m-5">
                 <SearchForm/>
             </div>
 
-            <Table headers={headers} rows={users}/>
+            <Table headers={headers} rows={users} is_editable={false}/>
         </>
     )
 }
