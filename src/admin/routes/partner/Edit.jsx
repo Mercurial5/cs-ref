@@ -6,17 +6,17 @@ export default () => {
     return (
         <>
             <div className="p-6 flex items-center justify-center">
-                <div className="container max-w-screen-lg mx-auto">
+                <div className="container max-w-screen-lg mx-auto flex justify-center">
 
-                    <div className="bg-gray-100 rounded-xl shadow-lg p-4 px-4 md:p-8 mb-6">
+                    <div className="bg-gray-100 rounded-xl shadow-lg p-4 px-4 md:p-8 mb-6 lg:w-1/2">
                         <div className="grid gap-4 gap-y-2 text-sm grid-cols-1">
                             <div className="text-gray-600 pb-8">
-                                <p className="font-medium text-2xl">Добавить партнера</p>
+                                <p className="font-medium text-2xl">Редактировать данные партнера</p>
                                 <p>Заполните все поля</p>
                             </div>
 
                             <div className="lg:col-span-2">
-                                <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-7">
+                                <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6">
                                     <div className="md:col-span-6 ">
                                         <label htmlFor="full_name">Название компании</label>
                                         <input type="text" name="full_name" id="full_name" className="outline-none h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
@@ -37,12 +37,12 @@ export default () => {
                                         <input type="text" name="email" id="email" className="outline-none h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="компания@gmail.com" />
                                     </div>
 
-                                    <div className="md:col-span-2">
+                                    <div className="md:col-span-3">
                                         <label htmlFor="IIN">ИИН</label>
                                         <input type="number" name="IIN" id="IIN" className="outline-none h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
                                     </div>
 
-                                    <div className="md:col-span-2">
+                                    <div className="md:col-span-3">
                                         <label htmlFor="code">КОД</label>
                                         <input type="number" name="code" id="code" className="outline-none h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
                                     </div>
@@ -54,13 +54,11 @@ export default () => {
                                                placeholder="Прикрепите договор"></input>
                                     </div>
 
-                                    <div className="md:col-span-2 text-left">
+                                    <div className="md:col-span-6 flex flex-row justify-between ">
                                         <div className="inline-flex items-end">
                                             <button onClick={() => navigate("/panel/partner")} className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-xl">Отменить</button>
                                         </div>
-                                    </div>
-
-                                    <div className="md:col-span-2 text-right">
+            
                                         <div className="inline-flex items-end">
                                             <button className="bg-[#007282] hover:bg-[#005F6D] text-white font-bold py-2 px-4 rounded-xl">Добавить</button>
                                         </div>

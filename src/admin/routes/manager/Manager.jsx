@@ -29,7 +29,7 @@ const ManagerView = () => {
             <div className="flex justify-between m-5">
                 <SearchForm/>
 
-                <Button icon="plus" text="Добавить Менеджера" onClick={() => navigate("/panel/add")}/>
+                <Button icon="plus" text="Добавить Менеджера" onClick={() => navigate("/panel/manager/add")}/>
             </div>
 
             <Table headers={headers} rows={users} edit_path="panel/manager/edit"/>
