@@ -20,28 +20,30 @@ export default function Table({headers, rows, is_editable = true}) {
                                                                       text="Редактировать"/></td>)
         }
 
-        table_rows.push(<tr className="h-14 border-b">{row}</tr>);
+        table_rows.push(<tr className={`h-14 ${i !== rows.length - 1 ? 'border-b' : ''}`}>{row}</tr>);
     }
 
 
     return (
-        // <div className="rounded-xl bg-white text-xs lg:text-sm m-5 border overflow-hidden">
-            <>
-            <table className="w-full">
-                <thead className="text-black/50 text-regular lg:text-sm text-xs border-b uppercase h-10 ">
-                <tr>
-                    {table_headers}
-                </tr>
-                </thead>
-                <tbody className="text-center h-10">
-                {table_rows}
-                </tbody>
-            </table>
+        <>
+            <div className="rounded-xl bg-white text-xs lg:text-sm border m-5">
+                <table className="w-full">
+                    <thead className="text-black/50 text-regular lg:text-sm text-xs border-b uppercase h-10">
+                    <tr>
+                        {table_headers}
+                    </tr>
+                    </thead>
+                    <tbody className="text-center h-10">
+                    {table_rows}
+                    </tbody>
+                </table>
+            </div>
+
             <div className="relative h-full mb-10">
                 <Pagination/>
             </div>
-            </>
-        // </div>
+
+        </>
 
     )
 }
