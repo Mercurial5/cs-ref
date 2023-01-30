@@ -14,8 +14,6 @@ const ManagerAdd = loadable(() => import("../routes/manager/Add"))
 const ManagerEdit = loadable(() => import("../routes/manager/Edit"))
 
 const Client = loadable(() => import("../routes/client/Client"));
-const ClientAdd = loadable(() => import("../routes/client/Add"))
-const ClientEdit = loadable(() => import("../routes/client/Edit"))
 
 const App = () => {
     const location = useLocation();
@@ -40,8 +38,6 @@ const App = () => {
                 </Route>
                 <Route path="client">
                     <Route index element={<Client/>}/>
-                    <Route path="add" element={<ClientAdd/>}/>
-                    <Route path="edit" element={<ClientEdit/>}/>
                 </Route>
                 <Route path="*" element={<Navigate to="/404" replace={true}/>}/>
             </Route>
