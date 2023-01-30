@@ -32,11 +32,9 @@ const ClientView = () => {
         <>
             <div className="flex justify-between m-5">
                 <SearchForm/>
-
-                <Button icon="plus" text="Добавить Менеджера" onClick={() => navigate("/panel/add")}/>
             </div>
 
-            <Table headers={headers} rows={users} edit_path="panel/client/edit"/>
+            <Table headers={headers} rows={users}/>
         </>
     )
 }

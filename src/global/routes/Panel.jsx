@@ -5,7 +5,9 @@ import { useStore } from "../api/user/store";
 import { ROLES } from "../api/user";
 
 import ClientApp from "../../client/views/App";
-import AdminApp from "../../admin/views/App"
+import AdminApp from "../../admin/views/App";
+import PartnerApp from "../../partner/views/App";
+
 
 const PanelLogic = () => {
   const navigate = useNavigate();
@@ -24,7 +26,9 @@ const PanelLogic = () => {
       case ROLES.CLIENT:
         return <ClientApp />;
       case ROLES.ADMIN:
-        return <AdminApp />
+        return <AdminApp />;
+      case ROLES.PARTNER:
+        return <PartnerApp />;
     }
   }
 
