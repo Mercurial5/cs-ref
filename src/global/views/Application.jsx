@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useCategoriesQuery, useCreateQuery } from "../../global/api/applications/queries";
+import { useCategoriesQuery, useCreateQuery } from "../api/applications/queries";
 import {
   useForm,
   Form,
@@ -9,10 +9,10 @@ import {
   Input,
   Textarea,
   Select,
-} from "../../global/components/Form";
+} from "../components/Form";
 import * as yup from "yup";
 
-const ApplicationView = ({ onCreate, onCancel }) => (
+const ApplicationView = () => (
   <CategoriesProvider>
     {({ categories, subcategories, handleChange }) => (
       <ApplicationFormLogic
@@ -25,10 +25,9 @@ const ApplicationView = ({ onCreate, onCancel }) => (
           Textarea: TextareaView,
           Select: SelectView,
         }}
-        onCreate={onCreate}
       >
         <div className="mb-8">
-          <h2 className="mb-3 text-4xl font-bold"> Новая заявка</h2>
+          <h2 className="mb-3 text-4xl font-bold">Заявка на услуги</h2>
         </div>
 
         <div
@@ -84,21 +83,18 @@ const ApplicationView = ({ onCreate, onCancel }) => (
         </div>
 
         <div className="max-sm:grid max-sm:grid-cols-2 sm:flex">
-          {typeof onCancel === "function" && (
-            <button
-              className="mt-8 mr-3 px-3 sm:px-6 py-3 sm:py-[14px] border-2 rounded-md border-zinc-200 hover:border-zinc-300 inline-flex justify-center items-center text-center text-sm sm:text-lg text-black font-semibold transition ease-in-out duration-150 hover:bg-zinc-300"
-              type="button"
-              onClick={onCancel}
-            >
-              Отмена
-            </button>
-          )}
+          <button
+            className="invisible mt-8 mr-3 px-3 sm:px-6 py-3 sm:py-[14px] border-2 rounded-md border-zinc-200 hover:border-zinc-300 inline-flex justify-center items-center text-center text-sm sm:text-lg text-black font-semibold transition ease-in-out duration-150 hover:bg-zinc-300"
+            type="button"
+          >
+            Добавить услугу
+          </button>
 
           <button
             className="px-3 sm:px-12 py-3 sm:py-4 mt-8 sm:ml-auto rounded-md inline-flex justify-center items-center text-center text-sm sm:text-lg text-white font-semibold bg-zinc-900 shadow-lg shadow-500/50 hover:shadow-gray-500/30"
             type="submit"
           >
-            Создать
+            Далее
           </button>
         </div>
       </ApplicationFormLogic>
@@ -153,9 +149,7 @@ const CategoriesProvider = ({ children }) => {
   );
 };
 
-const ApplicationFormLogic = ({ onCreate, children, ...props }) => {
-  const outsideHandleCreate = onCreate ? onCreate : () => null;
-
+const ApplicationFormLogic = ({ children, ...props }) => {
   const query = useCreateQuery();
 
   const values = {
@@ -190,10 +184,7 @@ const ApplicationFormLogic = ({ onCreate, children, ...props }) => {
       description: yup.string().required("Это поле обязательное!"),
     }),
 
-    onSubmit: (data, actions) => {
-      handleCreate(data);
-      actions.resetForm();
-    },
+    onSubmit: handleCreate,
   });
 
   return (

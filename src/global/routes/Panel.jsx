@@ -5,6 +5,7 @@ import { useStore } from "../api/user/store";
 import { ROLES } from "../api/user";
 
 import ClientApp from "../../client/views/App";
+import ManagerApp from "../../manager/views/App";
 
 const PanelLogic = () => {
   const navigate = useNavigate();
@@ -22,6 +23,9 @@ const PanelLogic = () => {
     switch (user.role) {
       case ROLES.CLIENT:
         return <ClientApp />;
+
+      case ROLES.MANAGER:
+        return <ManagerApp />;
     }
   }
 

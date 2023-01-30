@@ -4,6 +4,7 @@ import { useUpdateStore } from "../api/user/store";
 import { useVerifyQuery } from "../api/user/queries";
 
 import Login from "../routes/Login";
+import Application from "../routes/Application";
 import Panel from "../routes/Panel";
 import NotFound from "../routes/NotFound";
 
@@ -11,6 +12,7 @@ const AppView = () => (
   <AppLogic>
     <Routes>
       <Route index element={<Login />} />
+      <Route path="application" element={<Application />} />
       <Route path="panel/*" element={<Panel />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
