@@ -8,8 +8,7 @@ import { Navigate } from "react-router-dom";
 
 const Settings = loadable(() => import("../routes/Settings"));
 const Chats = loadable(() => import("../routes/Chats"));
-const Help = loadable(() => import("../routes/Help"));
-const Reference = loadable(() => import("../routes/Reference"));
+const Applications = loadable(() => import("../routes/Applications"));
 
 const App = () => {
   const location = useLocation();
@@ -25,9 +24,8 @@ const App = () => {
         <Route path="settings" element={<Settings />} />
         <Route element={<SideLayout />}>
           <Route path="chats" element={<Chats />} />
+          <Route path="applications" element={<Applications />} />
         </Route>
-        <Route path="help" element={<Help />} />
-        <Route path="reference" element={<Reference />} />
         <Route path="*" element={<Navigate to="/404" replace={true} />} />
       </Route>
     </Routes>

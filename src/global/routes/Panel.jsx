@@ -7,7 +7,7 @@ import { ROLES } from "../api/user";
 import ClientApp from "../../client/views/App";
 import AdminApp from "../../admin/views/App";
 import PartnerApp from "../../partner/views/App";
-
+import ManagerApp from "../../manager/views/App";
 
 const PanelLogic = () => {
   const navigate = useNavigate();
@@ -29,6 +29,8 @@ const PanelLogic = () => {
         return <AdminApp />;
       case ROLES.PARTNER:
         return <PartnerApp />;
+      case ROLES.MANAGER:
+        return <ManagerApp />;
     }
   }
 
