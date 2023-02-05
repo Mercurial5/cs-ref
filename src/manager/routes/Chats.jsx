@@ -249,6 +249,8 @@ const ChatLogic = ({ children }) => {
         [e?.from]: e?.message,
       }));
 
+      if (e.from != chat.id) return;
+
       setMessages((messages) => [
         ...messages,
         {
