@@ -21,7 +21,7 @@ const PartnerView = () => {
             let users_data = query.data.results;
             let users = []
             for (let i = 0; i < users_data.length; i++) {
-                users.push([users_data[0].company_name, users_data[0].company_type, users_data[0].code, users_data[0].IIN, users_data[0].email])
+                users.push([users_data[i].company_name, users_data[i].company_type, users_data[i].code, users_data[i].IIN, users_data[i].email])
             }
             setUsers(users);
             setPages(query.data.total_pages);
