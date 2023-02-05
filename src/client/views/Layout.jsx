@@ -6,7 +6,7 @@ const LayoutView = () => {
     <div className="min-h-screen bg-slate-200 flex flex-col">
       <Header />
 
-      <div className="flex-grow flex flex-col">
+      <div className="flex-grow flex flex-col p-5">
         <Outlet />
       </div>
     </div>
