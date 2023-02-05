@@ -8,16 +8,23 @@ import {ROLES} from "../../api/index.js";
 
 
 const PartnerView = () => {
-    const query = useUsersListQuery(ROLES.PARTNER, 1);
+    const searchParams = new URLSearchParams(document.location.search)
+    let page = searchParams.get('page');
+    page = page === null ? 1 : page;
+
+    const query = useUsersListQuery(ROLES.PARTNER, page);
     const [users, setUsers] = useState([]);
+    const [pages, setPages] = useState(1);
 
     useEffect(() => {
         if (query.data && query.isSuccess) {
+            let users_data = query.data.results;
             let users = []
-            for (let i = 0; i < query.data.length; i++) {
-                users.push([query.data[i].company_name, query.data[i].company_type, query.data[i].code, query.data[i].IIN, query.data[i].email])
+            for (let i = 0; i < users_data.length; i++) {
+                users.push([users_data[0].company_name, users_data[0].company_type, users_data[0].code, users_data[0].IIN, users_data[0].email])
             }
             setUsers(users);
+            setPages(query.data.total_pages);
         }
     }, [query.data, query.isSuccess]);
 
@@ -32,7 +39,7 @@ const PartnerView = () => {
                 <Button icon="plus" text="Добавить партнера" onClick={() => navigate("/panel/partner/add")}/>
             </div>
 
-            <Table headers={headers} rows={users}/>
+            <Table headers={headers} rows={users} total_pages={pages}/>
 
         </>
     )

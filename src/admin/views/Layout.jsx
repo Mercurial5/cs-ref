@@ -11,7 +11,9 @@ const LayoutView = () => {
                 <div className="flex flex-1 overflow-hidden h-screen mt-8 pb-6 pl-8">
                     <SideBarLayout/>
                     <div className="hidden lg:flex md:flex flex-col lg:w-4/5 md:w-4/5 sm:w-4/5 xs:w-4/5 bg-white shadow-md rounded-xl mr-4">
-                        <Outlet/>
+                        {/* <div className="bg-[#E8ECF5] rounded-xl h-full m-2"> */}
+                          <Outlet/>
+                        {/* </div> */}
                     </div>
                 </div>
             </div>

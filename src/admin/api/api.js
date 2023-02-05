@@ -1,8 +1,8 @@
 import {user} from "./tools/axios";
 
 export default {
-    async users(role) {
-        const response = await user.get("/users/?role=" + role);
+    async users(role, page) {
+        const response = await user.get("/users/?role=" + role + "&page=" + page);
         return response.data;
     },
 
