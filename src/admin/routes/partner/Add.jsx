@@ -17,9 +17,26 @@ export default () => {
 
                             <div className="lg:col-span-2">
                                 <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6">
-                                    <div className="md:col-span-6 ">
+
+
+                                    <div className="md:col-span-3">
+                                        <label htmlFor="name">Имя</label>
+                                        <input type="text" name="name" id="name" className="outline-none h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
+                                    </div>
+
+                                    <div className="md:col-span-3">
+                                        <label htmlFor="surname">Фамилия</label>
+                                        <input type="text" name="surname" id="surname" className="outline-none h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="" />
+                                    </div>
+
+                                    <div className="md:col-span-3 ">
                                         <label htmlFor="full_name">Название компании</label>
                                         <input type="text" name="full_name" id="full_name" className="outline-none h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
+                                    </div>
+
+                                    <div className="md:col-span-3 ">
+                                        <label htmlFor="phone">Телефон</label>
+                                        <input type="tel" name="phone" id="phone" className="outline-none h-10 border mt-1 rounded px-4 w-full bg-gray-50" />
                                     </div>
 
                                     <div className="md:col-span-3">
