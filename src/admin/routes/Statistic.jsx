@@ -21,7 +21,7 @@ const Statistic = () => {
             for (let i = 0; i < applications_data.length; i++) {
                 const manager = applications_data[i].manager;
 
-                applications.push([applications_data[i].id, applications_data[i].created, applications_data[i].owner.name, manager ? manager.name : '', applications_data[i].status])
+                applications.push([applications_data[i].id, new Date(applications_data[i].created).toLocaleString("ru-RU"), applications_data[i].owner.name, manager ? manager.name : '', applications_data[i].status])
             }
             setApplications(applications);
             setPages(query.data.total_pages);
