@@ -20,14 +20,14 @@ const ManagerView = () => {
             let users_data = query.data.results;
             let users = []
             for (let i = 0; i < users_data.length; i++) {
-                users.push([users_data[i].name, users_data[i].surname, users_data[i].email, users_data[i].phone, users_data[i].email])
+                users.push([users_data[i].name, users_data[i].surname, users_data[i].email, users_data[i].phone, users_data[i].specialization])
             }
             setUsers(users);
             setPages(query.data.total_pages);
         }
     }, [query.data, query.isSuccess]);
 
-    const headers = ['Имя', 'Фамилия', 'Почта', 'Телефон', 'Специализация', 'Редактировать'];
+    const headers = ['Имя', 'Фамилия', 'Почта', 'Телефон', 'Специализация'];
 
 
     const navigate = useNavigate();

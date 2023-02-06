@@ -41,8 +41,11 @@ export default () => {
 
     const form = useForm({
         values: {
+            name: "",
+            surname: "",
+            phone: "",
             company_name: "",
-            company_type: "",
+            company_type: "ТОО",
             email: "",
             IIN: "",
             code: "",
@@ -75,7 +78,37 @@ export default () => {
 
                             <div className="lg:col-span-2">
                                 <div className="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-6">
-                                    <Field className="block md:col-span-6 ">
+                                    <Field className="block md:col-span-3 ">
+                                        <FieldLabel>Имя</FieldLabel>
+                                        <Input
+                                            type="text"
+                                            className="outline-none h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                                            name="name"
+                                        />
+                                        <FieldError className="my-2 text-sm text-rose-700" />
+                                    </Field>
+
+                                    <Field className="block md:col-span-3">
+                                        <FieldLabel>Фамилия</FieldLabel>
+                                        <Input
+                                            type="text"
+                                            className="outline-none h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                                            name="surname"
+                                        />
+                                        <FieldError className="my-2 text-sm text-rose-700" />
+                                    </Field>
+
+                                    <Field className="block md:col-span-6">
+                                        <FieldLabel>Телефон</FieldLabel>
+                                        <Input
+                                            type="text"
+                                            className="outline-none h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                                            name="phone"
+                                        />
+                                        <FieldError className="my-2 text-sm text-rose-700" />
+                                    </Field>
+
+                                    <Field className="block md:col-span-3">
                                         <FieldLabel>Название компании</FieldLabel>
                                         <Input
                                             type="text"
@@ -99,7 +132,7 @@ export default () => {
                                         <FieldError className="my-2 text-sm text-rose-700" />
                                     </Field>
 
-                                    <Field className="block md:col-span-3">
+                                    <Field className="block md:col-span-6">
                                         <FieldLabel>Почта</FieldLabel>
                                         <Input
                                             type="text"
@@ -130,16 +163,6 @@ export default () => {
                                             name="code"
                                         />
                                         <FieldError className="my-2 text-sm text-rose-700" />
-                                    </Field>
-
-                                    <Field className="block md:col-span-6">
-                                        <FieldLabel>Договор</FieldLabel>
-                                        <Input
-                                            type="file"
-                                            className="block h-10 mt-1 rounded w-full text-sm text-slate-500 file:mr-4 file:py-2 file:rounded-full file:border-0 file:bg-violet-50 file:text-violet-700 file:text-sm file:font-medium hover:file:bg-violet-100"
-                                            placeholder="Прикрепите договор"
-                                            name="contract"
-                                        />
                                     </Field>
 
                                     <div className="md:col-span-6 flex flex-row justify-between ">
