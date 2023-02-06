@@ -7,7 +7,7 @@ export default {
     },
 
     async applications(page = 1) {
-        const response = await user.get("/applications/")
+        const response = await user.get("/applications/?page=" + page)
         return response.data;
     }
 };

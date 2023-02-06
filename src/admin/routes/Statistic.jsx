@@ -3,22 +3,28 @@ import {useApplicationsQuery} from "../api/queries.js";
 import {useEffect, useState} from "react";
 
 const Statistic = () => {
-    const headers = ['ID', 'Дата создания', 'Имя клиента', 'Имя менеджера', 'Статус']
+    const searchParams = new URLSearchParams(document.location.search)
+    let page = searchParams.get('page');
+    page = page === null ? 1 : page;
 
-    const [applications, setApplications] = useState([])
+    const query = useApplicationsQuery(page);
+    const [applications, setApplications] = useState([]);
+    const [pages, setPages] = useState(1);
 
-    const query = useApplicationsQuery(1);
+    const headers = ['ID', 'Дата создания', 'Имя клиента', 'Имя менеджера', 'Статус'];
 
     useEffect(() => {
         if (query.data && query.isSuccess) {
+            let applications_data = query.data.results;
             let applications = []
-            console.log(query.data[0])
-            for (let i = 0; i < query.data.length; i++) {
-                const manager = query.data[i].manager;
 
-                applications.push([query.data[i].id, query.data[i].created, query.data[i].owner.name, manager ? manager.name : '', query.data[i].status])
+            for (let i = 0; i < applications_data.length; i++) {
+                const manager = applications_data[i].manager;
+
+                applications.push([applications_data[i].id, applications_data[i].created, applications_data[i].owner.name, manager ? manager.name : '', applications_data[i].status])
             }
             setApplications(applications);
+            setPages(query.data.total_pages);
         }
     }, [query.data, query.isSuccess]);
 
@@ -37,7 +43,7 @@ const Statistic = () => {
                 <span className="font-medium text-xl my-6">Список заказов</span>
             </div>
 
-            <Table headers={headers} rows={applications} is_editable={false}/>
+            <Table headers={headers} rows={applications} total_pages={pages} current_page={page}/>
 
         </>
     );
