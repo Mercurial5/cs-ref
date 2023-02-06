@@ -168,8 +168,13 @@ function ApplicationDataDetails({ number, identifier, onDelete }) {
   );
 }
 
-function PersonalDataStep({ onBack, onFinish }) {
+function PersonalDataStep({ onBack }) {
   const [userType, setUserType] = useState(1);
+
+  const onFinish = (e) => {
+    e.preventDefault();
+    console.log(value);
+  };
 
   return (
     <>

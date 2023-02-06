@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.10",
     "@loadable/component": "^5.15.2",
     "autoprefixer": "^10.4.13",
     "axios": "^1.2.3",

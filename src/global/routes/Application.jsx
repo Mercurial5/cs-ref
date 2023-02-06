@@ -5,14 +5,6 @@ const ApplicationView = () => (
     <div className="max-w-[680px] w-full m-auto flex flex-col max-sm:flex-grow-[1]">
       <ApplicationCommonView />
 
-      <div className="w-full px-4 py-3 sm:mt-8 flex justify-center items-center select-none max-sm:bg-zinc-900">
-        <LogoIcon />
-
-        <span className="ml-2 xs:ml-4 lg:ml-6 mt-[3px] flex flex-col justify-center text-white">
-          <span className="-mb-1 text-xs lg:text-sm font-bold">CONCIERGE</span>
-          <span className="text-base lg:text-xl font-semibold">SERVICE</span>
-        </span>
-      </div>
     </div>
   </div>
 );
