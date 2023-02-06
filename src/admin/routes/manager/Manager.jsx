@@ -39,7 +39,7 @@ const ManagerView = () => {
                 <Button icon="plus" text="Добавить Менеджера" onClick={() => navigate("/panel/manager/add")}/>
             </div>
 
-            <Table headers={headers} rows={users} total_pages={pages}/>
+            <Table headers={headers} rows={users} total_pages={pages} current_page={page}/>
         </>
     )
 }

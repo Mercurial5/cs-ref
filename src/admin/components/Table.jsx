@@ -2,9 +2,9 @@ import {useNavigate} from "react-router-dom";
 import Button from "./Button/Button.jsx";
 import ReactPaginate from 'react-paginate';
 
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 
-export default function Table({headers, rows, total_pages, is_editable = true}) {
+export default function Table({headers, rows, current_page, total_pages, is_editable = true}) {
     const navigate = useNavigate();
 
     const table_headers = [];
@@ -43,7 +43,7 @@ export default function Table({headers, rows, total_pages, is_editable = true}) 
             </div>
 
             <div className="relative h-full mb-10">
-                <Pagination total_pages={total_pages}/>
+                <Pagination current_page={current_page} total_pages={total_pages}/>
             </div>
 
         </>
@@ -51,28 +51,18 @@ export default function Table({headers, rows, total_pages, is_editable = true}) 
     )
 }
 
-export function Pagination({total_pages}) {
+export function Pagination({current_page, total_pages}) {
 
-const [Rows, SetRows] = useState([]);
-const [currentPage, setCurrentPage] = useState(1);
-const [RowsPerPage] = useState(10);
+    const [Rows, SetRows] = useState([]);
+    const [RowsPerPage] = useState(10);
 
-const indexOfLastRow = currentPage * RowsPerPage;
-const indexOfFirstRow = indexOfLastRow - RowsPerPage;
-const currentRows = Rows.slice(indexOfFirstRow, indexOfLastRow);
+    const indexOfLastRow = current_page * RowsPerPage;
+    const indexOfFirstRow = indexOfLastRow - RowsPerPage;
+    const currentRows = Rows.slice(indexOfFirstRow, indexOfLastRow);
 
-
-    const nextPage = () => {
-        if(currentPage !== total_pages) 
-            setCurrentPage(currentPage + 1)
-    }
-    const prevPage = () => {
-        if(currentPage !== 1) 
-            setCurrentPage(currentPage - 1)
-    }
 
     const pageNumbers = [...Array(total_pages + 1).keys()].slice(1)
-    
+
     let active = 'text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700';
     let inactive = 'leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700';
 
@@ -81,18 +71,18 @@ const currentRows = Rows.slice(indexOfFirstRow, indexOfLastRow);
             <div className="flex justify-center">
                 <ul className="pagination inline-flex -space-x-px ">
                     <li>
-                        <a href="#" onClick={prevPage} className={`px-3 py-2 ml-0 ${inactive}`}>Previous</a>
+                        <a href={`?page=${current_page - 1}`} className={`px-3 py-2 ml-0 ${inactive}`}>Previous</a>
                     </li>
                     {pageNumbers.map(pgNumber => (
                         <li key={pgNumber}
-                        className={`page-item ${currentPage==pgNumber ? active : ''}`}>
-                            <a onClick={() => setCurrentPage(pgNumber)} href={`?page=${pgNumber}`} className="page-item px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                {pgNumber}</a>
+                            className="page-item">
+                            <a href={`?page=${pgNumber}`}
+                               className={`page-item px-3 py-2 ${current_page === pgNumber ? active : inactive}`}>{pgNumber}</a>
                         </li>
                     ))}
-                    
+
                     <li>
-                        <a href="#" onClick={nextPage} className={`px-3 py-2 ${inactive}`}>Next</a>
+                        <a href={`?page=${current_page + 1}`} className={`px-3 py-2 ${inactive}`}>Next</a>
                     </li>
                 </ul>
             </div>

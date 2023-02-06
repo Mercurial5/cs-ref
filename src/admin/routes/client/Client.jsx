@@ -35,7 +35,7 @@ const ClientView = () => {
                 <SearchForm/>
             </div>
 
-            <Table headers={headers} rows={users} total_pages={pages}/>
+            <Table headers={headers} rows={users} total_pages={pages} current_page={page}/>
         </>
     )
 }

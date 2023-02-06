@@ -39,7 +39,7 @@ const PartnerView = () => {
                 <Button icon="plus" text="Добавить партнера" onClick={() => navigate("/panel/partner/add")}/>
             </div>
 
-            <Table headers={headers} rows={users} total_pages={pages}/>
+            <Table headers={headers} rows={users} total_pages={pages} current_page={page}/>
 
         </>
     )
