@@ -18,10 +18,6 @@ export default function Table({headers, rows, current_page, total_pages, is_edit
         for (let j = 0; j < rows[i].length; j++) {
             row.push(<td>{rows[i][j]}</td>)
         }
-        if (is_editable) {
-            row.push(<td className="flex justify-center mt-2"><Button onClick={() => navigate("edit")} icon="edit"
-                                                                      text="Редактировать"/></td>)
-        }
 
         table_rows.push(<tr className={`h-14 ${i !== rows.length - 1 ? 'border-b' : ''}`}>{row}</tr>);
     }
@@ -42,7 +38,7 @@ export default function Table({headers, rows, current_page, total_pages, is_edit
                 </table>
             </div>
 
-            <div className="relative h-full mb-10">
+            <div className="h-full mb-10">
                 <Pagination current_page={current_page} total_pages={total_pages}/>
             </div>
 
@@ -67,7 +63,7 @@ export function Pagination({current_page, total_pages}) {
     let inactive = 'leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700';
 
     return (
-        <nav aria-label="Page navigation example" className="absolute inset-x-0 bottom-0">
+        <nav aria-label="Page navigation example" className="inset-x-0 bottom-0">
             <div className="flex justify-center">
                 <ul className="pagination inline-flex -space-x-px ">
                     <li>

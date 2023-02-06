@@ -28,7 +28,7 @@ const PartnerView = () => {
         }
     }, [query.data, query.isSuccess]);
 
-    const headers = ['Наименование', 'Форма организации', 'Код', 'ИИН', 'Почта', 'Редактировать'];
+    const headers = ['Наименование', 'Форма организации', 'Код', 'ИИН', 'Почта'];
 
     const navigate = useNavigate();
     return (
