@@ -80,7 +80,7 @@ const ApplicationsLogic = ({ children }) => {
 
   useEffect(() => {
     if (freeQuery.data && freeQuery.isSuccess) {
-      const data = freeQuery.data.map((item) => ({
+      const data = freeQuery.data.results.map((item) => ({
         id: item.id,
         fullname: `${item.owner.name} ${item.owner.surname}`,
         category: item.services[0].category,
