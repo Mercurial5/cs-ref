@@ -1,4 +1,4 @@
-import {user} from "./tools/axios";
+import { user } from "./tools/axios";
 
 export default {
     async users(role, page) {
@@ -7,7 +7,11 @@ export default {
     },
 
     async applications(page = 1) {
-        const response = await user.get("/applications/?page=" + page)
+        const response = await user.get("/applications/?page=" + page);
         return response.data;
-    }
+    },
+
+    async create(data) {
+        return await user.post("/users/", data);
+    },
 };
